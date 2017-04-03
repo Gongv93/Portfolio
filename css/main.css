@@ -77,3 +77,18 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 #main {
 margin-left: 250px;
 }
+
+  #top {
+    background-color: blue;
+    height: 20em; 
+  }
+
+  #testSec {
+    background-color: red;
+    height: 20em;
+  }
+
+  #testSec2 {
+    background-color: orange;
+    height: 50em;
+  }
