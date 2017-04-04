@@ -90,7 +90,6 @@ header h2 {
 
   #top {
     font-family: 'Source Sans Pro', sans-serif;
-    text-align: center;
     font-size: 30pt;
     background-color: black;
     color: #ededed;
@@ -101,7 +100,7 @@ header h2 {
     -o-background-size: cover;
     background-size: cover;
     background-position: center center;
-    padding: 4em; 
+    padding: 3em 4em 5em; 
   }
 
   #top p {
