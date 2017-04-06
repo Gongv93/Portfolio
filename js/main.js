@@ -1,5 +1,6 @@
 $(document).ready(function()
 {
+    $("#main").load("main.html");
 
     // Add smooth scroll to all links
     $("a").on('click', function(event) {
