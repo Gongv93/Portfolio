@@ -124,9 +124,8 @@ body {
   }
 
   #aboutme header img {
-    height: 20em;
-    width: 100%;
-    margin-bottom: 1em;
+    display: block;
+    margin: 0 0 2em 0;
   }
 
   #aboutme p {
