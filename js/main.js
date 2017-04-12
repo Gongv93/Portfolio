@@ -1,4 +1,5 @@
-var MAX_COL = 3;    // Max number of columns per row for projects
+var MAX_COL = 3;        // Max number of columns per row for projects
+var GIT_ID  = 5107486   // Git user ID
 
 $(document).ready(function()
 {
@@ -13,51 +14,54 @@ $(document).ready(function()
     // 
     function createProjectTiles(gitInfo) {
         var template = $("#projTemplate").html();    // Template for git details
-        var n = Math.ceil(gitInfo.length / MAX_COL); // Round up to get the correct number of rows
+        var projCount = 0;
+        var rowCount  = 0;
 
         // Exit early if size is 0
-        if(gitInfo.length == 0) return;
+        if(gitInfo.length == 0) 
+            return;
         
         // Remove the error message
         $("#projects").find(".container-fluid").find("#error").remove();
 
         // Create the currect numer of rows
-        for(i=0; i<n; ++i) {
-            $("#projects").find(".container-fluid").append("<div id=\"" + i + "\" "+ "class=\"row\"></div>");
+        for(i=0; i<gitInfo.length; ++i) {
+            // Fill in the template and append it to the current row element
+            var currentGitInfo = gitInfo[i];
 
-            // Make sure we make MAX_COL amount per row
-            for(j=0; j<MAX_COL; ++j) {
-                var infoIndex = i*MAX_COL + j; 
+            // Check to see if this repo belongs to me
+            if(currentGitInfo.owner.id != GIT_ID)
+                continue;
 
-                // Return if we reached past the last element
-                if(infoIndex >= gitInfo.length) return;
-            
-                // Fill in the template and append it to the current row element
-                var currentGitInfo = gitInfo[infoIndex];
-
-                // Get thumbnail pic from first line of each readme
-                var thumbnailLink = "https://s-media-cache-ak0.pinimg.com/originals/6c/28/2a/6c282a66c8955eb7517b0f0e3780f5a5.jpg"
-                $.ajax({url: currentGitInfo.url + "/readme", async: false,success: function(data) {
-                    $.ajax({url: data.download_url, async: false, success: function(result) {
-                        result = result.split('\n')[0];
-
-                        var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
-                        if(regexp.test(result)) {
-                            thumbnailLink = result;
-                        }
-                    }});    
-                }});
-
-                // Fill in template
-                var view = { name:        currentGitInfo.name,
-                             link:        currentGitInfo.html_url,
-                             image:       thumbnailLink,
-                             fullname:    currentGitInfo.full_name,
-                             description: currentGitInfo.description};
-                var rendered = Mustache.render(template, view);
-                
-                $("#projects").find(".container-fluid").find("#" + i).append(rendered);
+            // Create a new row everytime a row has been filled
+            if(projCount++ % MAX_COL == 0) {
+                rowCount++;
+                $("#projects").find(".container-fluid").append("<div id=\"" + rowCount + "\" "+ "class=\"row\"></div>");
             }
+
+            // Get thumbnail pic from first line of each readme
+            var thumbnailLink = "https://s-media-cache-ak0.pinimg.com/originals/6c/28/2a/6c282a66c8955eb7517b0f0e3780f5a5.jpg"
+            $.ajax({url: currentGitInfo.url + "/readme", async: false,success: function(data) {
+                $.ajax({url: data.download_url, async: false, success: function(result) {
+                    result = result.split('\n')[0];
+
+                    // Verify that the first line is a link
+                    var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+                    if(regexp.test(result)) {
+                        thumbnailLink = result;
+                    }
+                }});    
+            }});
+
+            // Fill in template
+            var view = { name:        currentGitInfo.name,
+                         link:        currentGitInfo.html_url,
+                         image:       thumbnailLink,
+                         fullname:    currentGitInfo.full_name,
+                         description: currentGitInfo.description};
+            var rendered = Mustache.render(template, view);
+            
+            $("#projects").find(".container-fluid").find("#" + rowCount).append(rendered);
         }
     }
 
