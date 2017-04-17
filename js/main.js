@@ -1,8 +1,14 @@
 var MAX_COL = 3;        // Max number of columns per row for projects
 var GIT_ID  = 5107486   // Git user ID
+var SCROLL_TIME = 500   // Animation time for scrolling
 
 $(document).ready(function()
 {
+    // Initialize the selected nav menu
+    var selectOffset = $("li").first().offset().top;
+    document.getElementById("active").style.top = selectOffset;
+    $("li").first().addClass("active2");
+
     // Load the main content to the page
     // 
     $("#main").load("main.html", function() {
@@ -74,15 +80,22 @@ $(document).ready(function()
         // Store hash
         var hash = this.hash;
 
-        $(".active").removeClass("active");
-        $(this).addClass("active");
+        $(".active2").removeClass("active2");
+        $(this).addClass("active2");
 
         // Scroll for 8ms to the specified location
         $('html, body').animate({
             scrollTop: $(hash).offset().top
-        }, 500, function() {
+        }, { duration: SCROLL_TIME, queue: false }, function() {
             // Set the new hash location
             window.location.hash = hash;
         });
+
+        // Animate the selected nav menu
+        var viewportOffset = this.getBoundingClientRect();
+
+        $('#active').animate({
+            top: viewportOffset.top
+        }, { duration: SCROLL_TIME, queue: false });
     });
 });
