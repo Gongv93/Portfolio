@@ -1,6 +1,9 @@
-var MAX_COL = 3;        // Max number of columns per row for projects
-var GIT_ID  = 5107486   // Git user ID
-var SCROLL_TIME = 500   // Animation time for scrolling
+var MAX_COL          = 3;         // Max number of columns per row for projects
+var GIT_ID           = 5107486;   // Git user ID
+var SCROLL_TIME      = 500;       // Animation time for scrolling
+var SCROLL_THRESHOLD = 0.2;       // The threashold of when the nav bar will change
+
+var animateFlag      = 0;         // Animation semaphore
 
 $(document).ready(function()
 {
@@ -80,15 +83,20 @@ $(document).ready(function()
         // Store hash
         var hash = this.hash;
 
+        animateFlag = 1;
+
         $(".active2").removeClass("active2");
         $(this).addClass("active2");
 
         // Scroll for 8ms to the specified location
         $('html, body').animate({
-            scrollTop: $(hash).offset().top
-        }, { duration: SCROLL_TIME, queue: false }, function() {
-            // Set the new hash location
-            window.location.hash = hash;
+             scrollTop: $(hash).offset().top
+        }, { duration: SCROLL_TIME, 
+             queue: false, 
+             complete: function() {
+                window.location.hash = hash;    // Set the new hash location
+                animateFlag = 0;                // Release animate flag
+            }
         });
 
         // Animate the selected nav menu
@@ -97,5 +105,46 @@ $(document).ready(function()
         $('#active').animate({
             top: viewportOffset.top
         }, { duration: SCROLL_TIME, queue: false });
+    });
+
+    //Update the nav bar according to the scroll location
+    //
+    var windowHeight = $(window).height();
+    var threashold_line = windowHeight * SCROLL_THRESHOLD;
+       
+    $(window).on('scroll', function () {
+        // Check to see if the user is scrolling and not from clicking
+        if(animateFlag == 0) {
+            // Check to see where we need to update 
+            $('section').each(function () {
+                var thisTop = $(this).offset().top - $(window).scrollTop();
+
+                // If our line is between a section then we update
+                // the nav bar with the new selection
+                if (threashold_line > thisTop && 
+                   (threashold_line < thisTop + $(this).height())) 
+                {
+                    animateFlag = 1;    // Take animation flag
+
+                    // Get the element we have to update in the nav bar
+                    var newSelect = $("a[href=\""+ "#" + $(this).attr('id') + "\"]")[0];
+
+                    // Update the nav bar accordinly
+                    $(".active2").removeClass("active2");
+                    $(newSelect).addClass("active2");
+
+                    var viewportOffset = newSelect.getBoundingClientRect();
+
+                    $('#active').animate({
+                         top: viewportOffset.top
+                    }, { duration: SCROLL_TIME, 
+                         queue: false,
+                         complete: function () {
+                             animateFlag = 0;   // Release animation flag
+                         }
+                    });
+                }
+            });
+        }
     });
 });
