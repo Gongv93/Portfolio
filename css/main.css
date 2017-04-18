@@ -147,3 +147,8 @@ body {
     font-size: 16pt;
     padding-top: 1em;
   }
+
+  #aboutme #pic {
+    display: table;
+    margin: auto;
+  }
