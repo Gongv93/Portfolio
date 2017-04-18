@@ -13,7 +13,7 @@ Here are some of the major things I learned while creating this portfolio.
 * JQuery
 
 # Future plans
-Even though a site is at a presentable state, I believe there can be many improments. Below are some of the folowing improments that I think would help me learn even more and improve the overall experience
+Even though a site is at a presentable state, I believe there can be many improvements. Below are some of the following improvements that I think would help me learn even more and improve the overall experience
 
 * Creating a more seamless heading
 * Create some back-end functionality to learn how to communicate between the front and back
