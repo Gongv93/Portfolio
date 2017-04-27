@@ -3,8 +3,6 @@ var GIT_ID           = 5107486;   // Git user ID
 var SCROLL_TIME      = 400;       // Animation time for scrolling
 var SCROLL_THRESHOLD = 0.2;       // The threashold of when the nav bar will change
 
-var animateFlag      = 0;         // Animation semaphore
-
 $(document).ready(function()
 {
     // Initialize the selected nav menu
@@ -50,7 +48,7 @@ $(document).ready(function()
 
             // Get thumbnail pic from first line of each readme
             var thumbnailLink = "https://s-media-cache-ak0.pinimg.com/originals/6c/28/2a/6c282a66c8955eb7517b0f0e3780f5a5.jpg"
-            $.ajax({url: currentGitInfo.url + "/readme", async: false,success: function(data) {
+            $.ajax({url: currentGitInfo.url + "/readme", async: false, success: function(data) {
                 $.ajax({url: data.download_url, async: false, success: function(result) {
                     result = result.split('\n')[0];
 
@@ -76,7 +74,7 @@ $(document).ready(function()
 
     // Add smooth scroll to all links
     // 
-    $("a").on('click', function(event) {
+    $("nav a").click(function(event) {
         // Prevent default behavior 
         event.preventDefault();
 
@@ -102,7 +100,7 @@ $(document).ready(function()
     var windowHeight = $(window).height();
     var threashold_line = windowHeight * SCROLL_THRESHOLD;
        
-    $(window).on('scroll', function () {
+    $(window).scroll(function () {
         // Check to see where we need to update 
         $('section').each(function () {
             var thisTop = $(this).offset().top - $(window).scrollTop();
