@@ -15,6 +15,12 @@ $(document).ready(function()
     $("#main").load("main.html", function() {
        // Get git hub repo information and create links to them
        $.getJSON("https://api.github.com/users/Gongv93/starred", createProjectTiles);
+
+       $('.skillbar').each(function(){
+            $(this).find('.skillbar-bar').animate({
+                width: $(this).attr('data-percent')
+            },6000);
+        });
     });
 
     // This function takes the git information and creates our project tiles to display
