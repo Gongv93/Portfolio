@@ -147,4 +147,13 @@ $(document).ready(function()
             });
         }
     });
+
+
+    // Toggle button for showing nav
+    //
+    $("#toggleNav").click(function() {
+        $("#sidebar").toggleClass("toggle toggleOff");
+        $("#main").toggleClass("toggle toggleOff");
+        $("#toggleNav").toggleClass("toggle toggleOff");
+    });
 });
