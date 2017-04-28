@@ -118,12 +118,11 @@ body {
     font-size: 32pt;
   }
 
-  #main > section {
-    padding: 0em 2em;
-    margin-bottom: 2.5em;
+  #main > section:not(:first-child) {
+    padding: 2em 5em;
   }
 
-  .jumbotron {
+  .banner {
     position: relative;
     text-align: center;
     background: #000 url("https://static.pexels.com/photos/129922/pexels-photo-129922.jpeg") center center;
