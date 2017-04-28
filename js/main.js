@@ -140,5 +140,6 @@ $(document).ready(function()
         $("#sidebar").toggleClass("toggle toggleOff");
         $("#main").toggleClass("toggle toggleOff");
         $("#toggleNav").toggleClass("toggle toggleOff");
+        $("#footer").toggleClass("toggle toggleOff");
     });
 });
