@@ -35,7 +35,7 @@ $(document).ready(function()
             return;
         
         // Remove the error message
-        $("#projects").find(".container-fluid").find("#error").remove();
+        $("#projects").find(".container").find("#error").remove();
 
         // Create the currect numer of rows
         for(i=0; i<gitInfo.length; ++i) {
@@ -49,7 +49,7 @@ $(document).ready(function()
             // Create a new row everytime a row has been filled
             if(projCount++ % MAX_COL == 0) {
                 rowCount++;
-                $("#projects").find(".container-fluid").append("<div id=\"" + rowCount + "\" "+ "class=\"row\"></div>");
+                $("#projects").find(".container").append("<div id=\"" + rowCount + "\" "+ "class=\"row\"></div>");
             }
 
             // Get thumbnail pic from first line of each readme
@@ -74,7 +74,7 @@ $(document).ready(function()
                          description: currentGitInfo.description};
             var rendered = Mustache.render(template, view);
             
-            $("#projects").find(".container-fluid").find("#" + rowCount).append(rendered);
+            $("#projects").find(".container").find("#" + rowCount).append(rendered);
         }
     }
 
