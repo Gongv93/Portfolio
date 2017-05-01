@@ -158,7 +158,6 @@ $(document).ready(function()
             if ($elem.hasClass('start')) continue;
 
             if (isElementInViewport($elem)) {
-                console.log("hi");
                 var percent = $elem.attr('data-percent');
                 $elem.find('.skillbar-bar').animate({
                     width: percent
