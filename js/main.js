@@ -1,7 +1,6 @@
 var MAX_COL          = 3;         // Max number of columns per row for projects
 var GIT_ID           = 5107486;   // Git user ID
 var SCROLL_TIME      = 400;       // Animation time for scrolling
-var SCROLL_THRESHOLD = 0.2;       // The threashold of when the nav bar will change
 
 $(document).ready(function()
 {
@@ -101,20 +100,30 @@ $(document).ready(function()
         });
     });
 
-    //Update the nav bar according to the scroll location
-    //
-    var windowHeight = $(window).height();
-    var threashold_line = windowHeight * SCROLL_THRESHOLD;
-       
     $(window).scroll(function () {
+        updateNav();
+    });
+
+    // Toggle button for showing nav
+    //
+    $("#toggleNav").click(function() {
+        $("#sidebar").toggleClass("toggle toggleOff");
+        $("#main").toggleClass("toggle toggleOff");
+        $("#toggleNav").toggleClass("toggle toggleOff");
+        $("#footer").toggleClass("toggle toggleOff");
+    });
+
+    function updateNav() {
+        var threshold_line = 50;   // Number of pixel from the top before selection gets updated
+
         // Check to see where we need to update 
         $('section').each(function () {
             var thisTop = $(this).offset().top - $(window).scrollTop();
 
             // If our line is between a section then we update
             // the nav bar with the new selection
-            if (threashold_line > thisTop && 
-               (threashold_line < thisTop + $(this).height())) 
+            if (threshold_line > thisTop && 
+               (threshold_line < thisTop + $(this).height())) 
             {
                 // Get the element we have to update in the nav bar
                 var newSelect = $("a[href=\""+ "#" + $(this).attr('id') + "\"]")[0];
@@ -132,14 +141,5 @@ $(document).ready(function()
                 });
             }
         });
-    });
-
-    // Toggle button for showing nav
-    //
-    $("#toggleNav").click(function() {
-        $("#sidebar").toggleClass("toggle toggleOff");
-        $("#main").toggleClass("toggle toggleOff");
-        $("#toggleNav").toggleClass("toggle toggleOff");
-        $("#footer").toggleClass("toggle toggleOff");
-    });
+    }
 });
