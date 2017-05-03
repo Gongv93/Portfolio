@@ -10,6 +10,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 body {
     font-family: 'Source Sans Pro', sans-serif;
+    background-color: #e8e8e8;
 }
 
 /* Side bar */
@@ -24,6 +25,7 @@ body {
   left:0;
   background-color: #222729;
   transition: 0.5s;
+  z-index: 999;
 }
 
 #sidebar.toggle {
