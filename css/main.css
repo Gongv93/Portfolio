@@ -1,5 +1,5 @@
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+html, body, .container, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0;
     padding: 0;
     border: 0;
@@ -14,102 +14,50 @@ body {
 }
 
 /* Side bar */
-#sidebar{
-  box-shadow: inset -0.25em 0 0.25em 0 rgba(0, 0, 0, 0.1);
-  position:fixed;
-  text-align: right;
-  font-size: 19pt;
-  height:100%;
-  width:250px; 
-  top:0;
-  left:0;
-  background-color: #222729;
-  transition: 0.5s;
-  z-index: 999;
+.navmenu {
+  padding-top: 50px;
 }
 
-#sidebar.toggle {
-
+.navbar {
+  display: block;
+  text-align: center;
+}
+.navbar-brand {
+  display: inline-block;
+  float: none;
+}
+.navbar-toggle {
+  position: absolute;
+  float: left;
+  margin-left: 15px;
 }
 
-#sidebar.toggleOff {
-  left: -250px;
+.container {
+  max-width: 100%;
 }
 
-  #banner {
-    position: relative;
-    margin: 1.75em 1.5em 1.5em 1.5em;
-    color: #eaeaea;
-    min-height: 48px;
-    cursor: default;
+@media (min-width: 1px) {
+  .navbar-toggle {
+    display: block !important;
   }
+}
 
-  #banner h1 {
-    position: relative;
-    font-weight: 600;
-    font-size: 1em;
-    line-height: 1em;
+@media (min-width: 992px) {
+  body {
+    padding: 0 0 0 300px;
   }
-
-
-  #banner p {
-    position: relative;
-    display: block;
-    font-size: .5em;
-    color: rgba(255, 255, 255, 0.5);
-    line-height: 1.25em;
-    margin: 0.3em 0 0 0;
+  .navmenu {
+    padding-top: 0;
   }
-
-
-  #nav ul {
-    list-style: none;
+  .navbar {
+    display: none !important; /* IE8 fix */
   }
-
-  #nav ul li a {
-    list-style: none;
-    display: block;
-    text-decoration: none; 
-    font-size: 0.8em;
-    color: #878787;
-    outline: 0;
-    border: 0;
-    padding: 1em 2.0em 1em 1.25em;
-  }
-
-  #active {
-    background-color: rgba(0, 0, 0, 0.15);
-    padding: 1em 2.0em 1em 1.25em;
-    width: 100%;
-    position: absolute;
-  }
-
-  #nav .active2 span{
-    color: white;
-  }
-
-  #nav ul li a span {
-    position: relative;
-    display: block;
-    font-size: 0.8em;
-  }
-
-  #nav ul li a:hover {
-    color: #cccccc;
-  }
+}
 
 /* Main content */
 #main {
   background-color: #e8e8e8;
   transition: 0.5s;
-}
-
-#main.toggle {
-  margin-left: 250px;
-}
-
-#main.toggleOff {
-  margin-left: 0;
 }
 
 #main header {
@@ -180,14 +128,6 @@ body {
   font-size: 0.8em;
 }
 
-  #footer.toggle {
-    left: 260px;
-  }
-
-  #footer.toggleOff {
-    left: 10px;
-  }
-
 /* Toggle button */
 #toggleNav {
   position: fixed;
@@ -199,14 +139,6 @@ body {
   border-radius: .4em;
   transition: 0.5s;
   color: rgba(255, 255, 255, 0.85);
-}
-
-#toggleNav.toggle {
-  left: 260px;
-}
-
-#toggleNav.toggleOff {
-  left: 10px;
 }
 
 /* Taken from Tamak https://codepen.io/tamak/ */

@@ -3,11 +3,13 @@
 <html>
 
 <head>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
 
     <link href="css/main.css" rel="stylesheet"/>
 
@@ -17,6 +19,26 @@
 <body>
 
     <!-- Side bar content -->
+    <div class="navmenu navmenu-default navmenu-fixed-left offcanvas-sm">
+      <a class="navmenu-brand visible-md visible-lg" href="#">Project name</a>
+      <ul class="nav navmenu-nav">
+        <li class="active"><a href="./">Slide in</a></li>
+        <li><a href="../navmenu-push/">Push</a></li>
+        <li><a href="../navmenu-reveal/">Reveal</a></li>
+        <li><a href="../navbar-offcanvas/">Off canvas navbar</a></li>
+      </ul>
+    </div>
+
+    <div class="navbar navbar-default navbar-fixed-top hidden-md hidden-lg">
+      <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".navmenu">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Project name</a>
+    </div>
+
+    <!--
     <div id="sidebar" class="toggleOff">
         <div id="banner">
             <h1>Vincent Gong</h1>
@@ -35,22 +57,23 @@
             </ul>
         </nav>
     </div>
+    -->
 
-    <div id="toggleNav" class="toggleOff">
-        <span style="font-size:30px;cursor:pointer">&#9776;</span>
-    </div>
-
+    <div class="container">
     <!-- Main Content -->
     <div id="main" class="toggleOff"></div>
 
 
     <div id="footer" class="toggleOff"></div>
+    </div>
 
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
-    <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
 
     <!-- Mustache js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
