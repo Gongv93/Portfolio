@@ -28,8 +28,8 @@ $(document).ready(function()
         // Store hash
         var hash = this.hash;
 
-        $(".active2").removeClass("active2");
-        $(this).addClass("active2");
+        $(".active").removeClass("active");
+        $(this).addClass("active");
 
         // Scroll for 8ms to the specified location
         $('html, body').animate({
@@ -44,19 +44,13 @@ $(document).ready(function()
 
     // Scroll listener
     //
+    /* TODO(Vincent): Need to fix responsive navbar animation
     $(window).scroll(function () {
         checkAnimation();
         updateNav();
     });
-
-    // Toggle button for showing nav
-    //
-    $("#toggleNav").click(function() {
-        $("#sidebar").toggleClass("toggle toggleOff");
-        $("#main").toggleClass("toggle toggleOff");
-        $("#toggleNav").toggleClass("toggle toggleOff");
-        $("#footer").toggleClass("toggle toggleOff");
-    });
+    */
+});
 
 /**********************************************
  *                  Functions 
@@ -187,4 +181,3 @@ $(document).ready(function()
 
         return ((elemTop < viewportBottom) && (elemBottom > viewportTop));
     }
-});
