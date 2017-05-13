@@ -133,7 +133,7 @@ body {
   .banner {
     position: relative;
     text-align: center;
-    background: #000 url("https://static.pexels.com/photos/129922/pexels-photo-129922.jpeg") center center;
+    background: #000 url("../images/pexels-photo-129922.jpeg") center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
