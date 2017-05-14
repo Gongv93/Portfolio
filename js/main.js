@@ -44,12 +44,11 @@ $(document).ready(function()
 
     // Scroll listener
     //
-    /* TODO(Vincent): Need to fix responsive navbar animation
+    // TODO(Vincent): Need to fix responsive navbar animation
     $(window).scroll(function () {
         checkAnimation();
-        updateNav();
+        //updateNav();
     });
-    */
 });
 
 /**********************************************
