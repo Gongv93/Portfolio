@@ -47,7 +47,7 @@ $(document).ready(function()
     // TODO(Vincent): Need to fix responsive navbar animation
     $(window).scroll(function () {
         checkAnimation();
-        //updateNav();
+        updateNav();
     });
 });
 
@@ -123,9 +123,14 @@ $(document).ready(function()
             if (threshold_line > thisTop && 
                (threshold_line < thisTop + $(this).height())) 
             {
+
+                
                 // Get the element we have to update in the nav bar
                 var newSelect = $("a[href=\""+ "#" + $(this).attr('id') + "\"]")[0];
 
+                $(".active").removeClass("active");
+                $(newSelect).addClass("active");
+                /*
                 // Update the nav bar accordinly
                 $(".active2").removeClass("active2");
                 $(newSelect).addClass("active2");
@@ -137,6 +142,7 @@ $(document).ready(function()
                 }, { duration: SCROLL_TIME, 
                      queue: false
                 });
+                */
             }
         });
     }
